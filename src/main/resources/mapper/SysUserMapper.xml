@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="link.yangxin.workdemo.dao.SysUserMapper">
+    <insert id="insertBatch">
+        insert ignore into sys_user_tab(user_code, user_nick, user_name, user_sex, user_birth, user_pass,
+                                        user_phone, user_icon, user_open_id, idcard_no, status, last_menstrual_date,
+                                        register_time, province_code, province_name, city_code, city_name, longitude,
+                                        latitude, address, sys_create, create_time, create_user_id, create_user_name,
+                                        update_time, update_user_id, update_user_name, last_login_time, union_id,
+                                        mp_open_id, subscribe, default_hp_id, register_source, is_disable, area,
+                                        open_plat_open_id, login_auth_code, login_auth_timestamp, subscribe_time,
+                                        unsubscribe_time, apple_user_identifier)
+                values
+        <foreach collection="userList" separator="," item="item">
+            (#{item.user_code},
+             #{item.user_nick},
+             #{item.user_name},
+             #{item.user_sex},
+             #{item.user_birth},
+             #{item.user_pass},
+
+             #{item.user_phone},
+             #{item.user_icon},
+             #{item.user_open_id},
+             #{item.idcard_no},
+             #{item.status},
+             #{item.last_menstrual_date},
+
+             #{item.register_time},
+            #{item.province_code},
+            #{item.province_name},
+            #{item.city_code},
+            #{item.city_name},
+            #{item.longitude},
+
+            #{item.latitude},
+            #{item.address},
+            #{item.sys_create},
+            #{item.create_time},
+             #{item.create_user_id},
+             #{item.create_user_name},
+
+            #{item.update_time},
+             #{item.update_user_id},
+             #{item.update_user_name},
+             #{item.last_login_time},
+             #{item.union_id},
+
+             #{item.mp_open_id},
+             #{item.subscribe},
+             #{item.default_hp_id},
+             #{item.register_source},
+             #{item.is_disable},
+             #{item.area},
+
+             #{item.open_plat_open_id},
+             #{item.login_auth_code},
+             #{item.login_auth_timestamp},
+             #{item.subscribe_time},
+
+             #{item.unsubscribe_time},
+             #{item.apple_user_identifier}
+            )
+        </foreach>
+    </insert>
+</mapper>
